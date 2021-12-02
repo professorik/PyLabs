@@ -39,7 +39,8 @@ def knights(n):
     def knightTour(visited, x, y, pos):
         visited[x][y] = pos
         if pos >= n * n:
-            #printPath()
+            printPath(visited) #comment this to not print 1728 boards
+            exit(0) #comment this to not find only 1 config
             visited[x][y] = 0
             res[0] += 1
             return
@@ -61,5 +62,5 @@ def knights(n):
 
 
 if __name__ == "__main__":
-    print(queens(8))
-    #print(knights(5)) #1 min to calculate
+    #print(queens(8))
+    print(knights(5))
