@@ -1,4 +1,4 @@
-def c(n):
+def queens(n):
     res = [0]
     col = [True]*n
     md = [True]*(2*n-1)
@@ -23,5 +23,43 @@ def c(n):
     return res
 
 
+def knights(n):
+    row = [2, 1, -1, -2, -2, -1, 1, 2, 2]
+    col = [1, 2, 2, 1, -1, -2, -2, -1, 1]
+    res = [0]
+
+    def isValid(x, y):
+        return 0 <= x < n and 0 <= y < n
+
+    def printPath(arr):
+        for r in arr:
+            print(r)
+        print()
+
+    def knightTour(visited, x, y, pos):
+        visited[x][y] = pos
+        if pos >= n * n:
+            #printPath()
+            visited[x][y] = 0
+            res[0] += 1
+            return
+        for k in range(8):
+            newX = x + row[k]
+            newY = y + col[k]
+            if isValid(newX, newY) and visited[newX][newY] == 0:
+                knightTour(visited, newX, newY, pos + 1)
+        visited[x][y] = 0
+
+
+    for i in range(n//2):
+        for j in range(n % 2 + n//2):
+            knightTour([[0]*n for y in range(n)], i, j, 1)
+    res[0] *= 4
+    if n % 2 == 1:
+        knightTour([[0]*n for y in range(n)], n//2, n//2, 1)
+    return res[0]
+
+
 if __name__ == "__main__":
-    print(c(int(input('Enter n: '))))
+    print(queens(8))
+    #print(knights(5)) #1 min to calculate
