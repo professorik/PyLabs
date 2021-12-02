@@ -1,6 +1,5 @@
-def kar():
-    x = [1,2,3]
-    n = len(x)
+def basicPerm(n):
+    x = list(range(1, n + 1))
 
 
     def p(t):
@@ -14,8 +13,8 @@ def kar():
 
     p(0)
 
-def kar2():
-    n = 4
+
+def permutations(n):
     arr = [[0], [1]]
 
 
@@ -39,4 +38,5 @@ def kar2():
 
 
 if __name__ == "__main__":
-    kar2()
+    #basicPerm(3)
+    permutations(3)
