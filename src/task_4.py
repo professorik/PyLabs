@@ -169,12 +169,12 @@ def updateStage():
 #--------------------GAME IN LIFE--------------------
 
 if __name__ == "__main__":
-    #startGame()
+    startGame()
 
-    t.up()
-    t.delay(0)
-    t.tracer(0, 0) #faster
-    SierpinskiRand()
+    #t.up()
+    #t.delay(0)
+    #t.tracer(0, 0) #faster
+    #SierpinskiRand()
     #fern()
 
     #arrNums = [15, 1, -6, 7, 12, -3, 6, 9]
