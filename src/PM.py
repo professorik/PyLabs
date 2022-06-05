@@ -4,6 +4,15 @@ from scipy.linalg import eig
 p = 0.85
 
 
+def powMethod(B):
+    A = B.transpose()
+    x = np.random.rand(A.shape[0])
+    for i in range(59):
+        x = A.dot(x) / np.linalg.norm(A.dot(x), ord=1)
+    l = A.dot(x).dot(x)/x.dot(x)
+    print(x, l)
+
+
 def build_graph():
     n = len(g)
     r = np.sum(g, axis=1)
@@ -25,6 +34,7 @@ if __name__ == "__main__":
          [0, 0, 1, 0, 0, 1, 1, 1]]
     res = build_graph()
     # print(res, "\n\n")
+    powMethod(res)
     values, left, right = eig(res, right=True, left=True)
     for i in range(len(values)):
         if abs(values[i] - 1) < 1e-8:
