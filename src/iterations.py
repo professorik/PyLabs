@@ -50,11 +50,18 @@ def loss(A, b, x):
     return np.linalg.norm(A.dot(x) - b, np.inf)
 
 
+def resultLoss(x, x0):
+    return np.linalg.norm(x - x0, np.inf)
+
+
 if __name__ == "__main__":
     A = np.matrix([[5, 1, 1], [2, 6, 1], [2, 2, 7]])
     b = np.matrix([10, 17, 27]).transpose()
+    res = np.matrix([1, 2, 3]).transpose()
     delta = 0.005
     x, i = solveJacoby(A, b, delta)
-    print("For %s loss - iterated %d times" % (loss(A, b, x), i))
+    #9 times
+    print("For %s loss - iterated %d times. Actual loss %s" % (loss(A, b, x), i, resultLoss(res, x)))
     x, i = solveGaussSeidel(A, b, delta)
-    print("For %s loss - iterated %d times" % (loss(A, b, x), i))
+    #3 times
+    print("For %s loss - iterated %d times. Actual loss %s" % (loss(A, b, x), i, resultLoss(res, x)))
