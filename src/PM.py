@@ -1,14 +1,18 @@
 import numpy as np
 from scipy.linalg import eig
 
-p = 0.85
+p = 0.9
 
 
 def powMethod(B):
     A = B.transpose()
     x = np.random.rand(A.shape[0])
+    x = [60, 120, 180]
     for i in range(59):
-        x = A.dot(x) / np.linalg.norm(A.dot(x), ord=1)
+        k = A.dot(x)
+        o = np.linalg.norm(A.dot(x), ord=1)
+        x = k / o
+        print(x, k, o)
     l = A.dot(x).dot(x)/x.dot(x)
     print(x, l)
 
@@ -32,6 +36,7 @@ if __name__ == "__main__":
          [1, 0, 0, 0, 1, 0, 0, 0],
          [0, 0, 0, 1, 0, 0, 0, 1],
          [0, 0, 1, 0, 0, 1, 1, 1]]
+    g = [[0, 1, 1], [0, 0, 1], [0, 0, 0]]
     res = build_graph()
     # print(res, "\n\n")
     powMethod(res)
