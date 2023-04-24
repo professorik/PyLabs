@@ -1,7 +1,12 @@
 import numpy as np
 
 if __name__ == "__main__":
-    A = np.array([[1, 3.61, 0], [3.61, 1.22, -1.11], [0, -1.11, 6.7]], np.float64)
+    #A = np.array([[1, 3.61, 0], [3.61, 1.22, -1.11], [0, -1.11, 6.7]], np.float64)
+    A = np.array([[2, 0, -1], [2, 4, -3], [3, 2, 4]], np.float64)
+    Q, R = np.linalg.qr(A)
+    print(Q)
+    print(R)
+    print(Q.dot(R))
     for i in range(500):
         Q, R = np.linalg.qr(A)
         A = R.dot(Q)
